@@ -20,9 +20,6 @@ configuration
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile($"appsettings.{env}.json", true, true);
 
-StripeOptions settings = new StripeOptions();
-builder.Configuration.Bind(settings);
-
 #endregion Read configuration
 
 #region Dependecy injection

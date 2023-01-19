@@ -22,8 +22,8 @@ namespace BlazorStripe.Server.Controllers
         {
             string json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
 
-            //try
-            //{
+            try
+            {
                 var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _webhookSecret);
                 switch (stripeEvent.Type)
                 {
@@ -38,11 +38,11 @@ namespace BlazorStripe.Server.Controllers
                         break;
                 }
                 return Ok();
-            //}
-            //catch (StripeException e)
-            //{
-            //    return BadRequest();
-            //}
+            }
+            catch (StripeException e)
+            {
+                return BadRequest();
+            }
         }
     }
 }
