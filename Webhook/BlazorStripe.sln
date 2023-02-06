@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStripe.Server", "BlazorStripe\Server\BlazorStripe.Server.csproj", "{5EF4036F-D341-4760-981D-43EC641CC114}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStripe.Server", "Server\BlazorStripe.Server.csproj", "{5EF4036F-D341-4760-981D-43EC641CC114}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStripe.Client", "BlazorStripe\Client\BlazorStripe.Client.csproj", "{A8207B60-78DA-45C9-AE58-8B465C35C7EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStripe.Client", "Client\BlazorStripe.Client.csproj", "{A8207B60-78DA-45C9-AE58-8B465C35C7EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStripe.Shared", "BlazorStripe\Shared\BlazorStripe.Shared.csproj", "{2D3F9DE5-A207-44CD-9F05-A1CDBC43BEB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStripe.Shared", "Shared\BlazorStripe.Shared.csproj", "{2D3F9DE5-A207-44CD-9F05-A1CDBC43BEB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

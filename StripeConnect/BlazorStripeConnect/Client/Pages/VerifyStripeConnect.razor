@@ -1,0 +1,45 @@
+﻿@page "/VerifyStripeConnect"
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject NavigationManager navMan
+
+<h3>VerifyStripeConnect</h3>
+
+@code {
+@*	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		var expectedState = await sessionStorage.GetItemAsync<string>("stripeState");
+		var queryString = navMan.ToAbsoluteUri(navMan.Uri).Query;
+		var query = QueryHelpers.ParseQuery(queryString);
+
+		if (query.TryGetValue("state", out var state))
+		{
+			if (state == expectedState)
+			{
+				await sessionStorage.RemoveItemAsync("stripeState");
+
+				if (query.TryGetValue("code", out var code))
+				{
+					var stripeId = stripeService.GetStripeIdFromAuthCode(code);
+					currentUser.StripeConnectId = stripeId;
+
+					await apiService.EditUserAsync(currentUser);
+					navMan.NavigateTo("/EditProfile");
+				}
+			}
+		}
+	}*@
+
+	public string GetStripeIdFromAuthCode(string authCode)
+	{
+		var options = new OAuthTokenCreateOptions
+			{
+				GrantType = "authorization_code",
+				Code = authCode,
+			};
+
+		var service = new OAuthTokenService();
+		var response = service.Create(options);
+
+		return response.StripeUserId;
+	}
+}
