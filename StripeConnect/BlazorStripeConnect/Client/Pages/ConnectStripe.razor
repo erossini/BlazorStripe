@@ -45,9 +45,9 @@
         {
             var expectedState = await sessionStorage.GetItemAsync<string>("stripeState");
 
-            //stripeState is written to session storage when Get Started button is clicked
-            //  If it returns null, the process hasn't begun so don't do anything here
-            //  This is needed because I am using the same page to initiate the Express process and to verify the response
+            // stripeState is written to session storage when Get Started button is clicked
+            // If it returns null, the process hasn't begun so don't do anything here
+            // This is needed because I am using the same page to initiate the Express process and to verify the response
             if (expectedState == null)
             {
                 loading = false;
@@ -60,19 +60,19 @@
 
             if (query.TryGetValue("state", out var state))
             {
-                //Verify state matches expected state
-                //Expected state was stored in session storage in GoToStripeConnectExpress()
-                //Used to mitigate CSRF attacks
+                // Verify state matches expected state
+                // Expected state was stored in session storage in GoToStripeConnectExpress()
+                // Used to mitigate CSRF attacks
                 if (state == expectedState)
                 {
-                    //state information no longer needed, so clean up like a good lad.
+                    // state information no longer needed, so clean up like a good lad.
                     await sessionStorage.RemoveItemAsync("stripeState");
 
-                    //use authorization code returned by stripe to get user's account id
+                    // use authorization code returned by stripe to get user's account id
                     if (query.TryGetValue("code", out var code))
                     {
                         var connectId = GetStripeIdFromAuthCode(code);
-                        //Save connectId to user table in database
+                        // Save connectId to user table in database
 
                         bankAccount = GetConnectBankAccount(connectId);
                         loading = false;
